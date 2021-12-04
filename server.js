@@ -9,7 +9,7 @@ const { User } = require('./models');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-mediadb', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-media', {
   useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true
