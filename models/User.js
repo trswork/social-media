@@ -12,26 +12,23 @@ const UserSchema = new Schema(
     email: {
       type: String,
       unique: true,
-      required: 'Last Name is Required'
-    },
-
-    password: {
-      type: String,
-      trim: true,
-      required: 'Password is Required',
-      validate: [({ length }) => length >= 6, 'Password should be longer.']
-    },
-
-    email: {
-      type: String,
-      unique: true,
+      required: 'Email is Required',
       match: [/.+@.+\..+/, 'Please enter a valid e-mail address']
     },
 
-    userCreated: {
-      type: Date,
-      default: Date.now
+    thoughts: [
+     {
+      type: Schema.Types.ObjectId,
+          ref: 'thought'
+    } 
+    ],
+    
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
     }
+  ]
   },
   {
     toJSON: {
@@ -41,8 +38,8 @@ const UserSchema = new Schema(
   }
 );
 
-UserSchema.virtual('username').get(function() {
-  return this.email.slice(0, this.email.indexOf('@'));
+UserSchema.virtual('friendCount').get(function() {
+  return this.friends.length;
 });
 
 const User = model('User', UserSchema);
