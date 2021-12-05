@@ -15,11 +15,14 @@ router.route('/')
   .get(getAllThought)
   .post(createThought);
 
+
+
 // Set up GET one, PUT, and DELETE at /api/thought/:id
 router.route('/:id')
   .get(getThoughtById)
   .put(updateThought)
   .delete(deleteThought);
+  
 
 // Create a PUT and DELETE at /api/thoughts/:userId/:thoughtId
 router.route('/:userId/:thoughtId')
