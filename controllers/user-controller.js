@@ -44,7 +44,7 @@ const userController = {
          },
    // update User by id
          updateUser({ params, body }, res) {
-           User.findOneAndUpdate({ _id: params.id }, body, { new: true })
+           User.findOneAndUpdate({ userId: params.id }, body, { new: true })
              .then(dbUserData => {
                if (!dbUserData) {
                  res.status(404).json({ message: 'No user found with this id!' });
@@ -70,8 +70,8 @@ const userController = {
     //  add Friend
     addFriend({ params, body }, res) {
         User.findOneAndUpdate(
-          { _id: params.userId },
-          { $addToSet: { friend: body } },
+          { _id: params.id },
+          { $addToSet: { friendId: params.friendId } },
           { new: true }
         )
           .then(dbUserData => {
@@ -87,13 +87,19 @@ const userController = {
     //   remove friend
     deleteFriend({ params }, res) {
         User.findOneAndUpdate(
-          { _id: params.userId },
-          { $pull: { friend: { friendId: params.friendId } } },
+          { _id: params.id },
+          { $pull: { friendId: params.friendId } },
           { new: true }
         )
-          .then(dbUserData => res.json(dbUserData))
+          .then(dbUserData => {
+            if (!dbUserData) {
+              res.status(404).json({ message: 'No user found with this id!' });
+              return;
+            }
+            res.json(dbUserData);
+          })
           .catch(err => res.json(err));
       },
-   };
+    }
 
 module.exports = userController;
