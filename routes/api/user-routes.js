@@ -22,8 +22,8 @@ router.route('/:id')
   .delete(deleteUser);
 
   // Create a PUT and DELETE at /api/users/:userId/friends/:friendId
-  router.route('/:userId/friends')
+  router.route('/:userId/friends/:friendId')
   .put(addFriend)
   .delete(deleteFriend)
-  
+
 module.exports = router;

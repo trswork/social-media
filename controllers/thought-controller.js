@@ -2,15 +2,14 @@ const { User, Thought, Reaction } = require('../models');
 
 const thoughtController = {
     // createthought
-    addThought({ params, body }, res) {
-        console.log(body);
+    createThought({ body }, res) {
         Thought.create(body)
-            .then(({ _id }) => {
-                return User.findOneAndUpdate(
-                    { _id: params.userId },
-                    { $push: { thoughts: _id } },
+            .then(dbThoughtData => {
+                User.findOneAndUpdate(
+                    { _id: body.userId },
+                    { $push: { thoughts: dbThoughtData._id } },
                     { new: true }
-                );
+                )
             })
           .then(dbUserData => {
             if (!dbUserData) {
