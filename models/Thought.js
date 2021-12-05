@@ -39,7 +39,7 @@ const thoughtSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    createdBy: {
+    userName: {
         type: String,
         required: true
     },
