@@ -31,6 +31,13 @@ getThoughtById({ params }, res) {
         .then(dbUserData => res.json(dbUserData))
         .catch(err => res.status(400).json(err));
     },
+// add thought
+addThought({ params, body }, res) {
+  Thought.findOneAndUpdate(
+    { _id: params.thoughtId },
+    { $push: { thought: body } },
+    { new: true, runValidators: true }
+  )},
 
 //update thought by id
          updateThought({ params, body }, res) {
