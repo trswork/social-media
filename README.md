@@ -24,14 +24,14 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 - [Questions](#questions)
 
 ## Installation
-Install dependencies using npm install.
-Install express using npm i express.
-Install Mongoose using npm install mongoose.
-Run npm start to run server. 
-Use Insomnia to test the REST API.
+- Install dependencies using npm install.
+- Install express using npm i express.
+- Install Mongoose using npm install mongoose.
+- Run npm start to run server. 
+- Use Insomnia to test the REST API.
 
 ## Packages
-express
-Mongoose
+- express
+- Mongoose
 
 ## Questions
