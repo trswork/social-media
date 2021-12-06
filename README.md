@@ -36,5 +36,5 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ## Questions
 Video links below
-https://watch.screencastify.com/v/PLoxovoWKRXDAJL5YLja
-https://watch.screencastify.com/v/YK1zMOQuiIByoG5qlw4r
+- https://watch.screencastify.com/v/PLoxovoWKRXDAJL5YLja
+- https://watch.screencastify.com/v/YK1zMOQuiIByoG5qlw4r
